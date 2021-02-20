@@ -9,6 +9,8 @@ const AppWrapper = styled.div `
   align-items: center;
   height: 100vh;
   background: #F2F2F2;
+  color: #707070;
+  font-family: Montserrat;
 `
 const ClockRing = styled.div ` 
   width: 18rem;
@@ -78,9 +80,9 @@ const SecondsHand = styled.div `
   transform-origin: bottom center;
 `
 const SleepWakeSwitch = styled.div ` 
-  width: 13rem;
+  width: 15rem;
   display: flex;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   border-radius: 10px;
   /* box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.2); */
   h3 {
@@ -103,6 +105,54 @@ const Wake = styled.div `
   border-top-right-radius: 10px;
   background: #D9D9D9;
   cursor: pointer;
+`
+const SleepMode = styled.div ` 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-size: 40px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 25px;
+    margin: 0.5rem;
+  }
+  .footNote {
+    font-size: 10px;
+    text-align: center;
+  }
+`
+const WakeMode = styled.div ` 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-size: 40px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 25px;
+    margin: 0.5rem;
+  }
+  .footNote {
+    font-size: 10px;
+    text-align: center;
+  }
 `
 
 function RingDots() {
@@ -182,18 +232,30 @@ function RingDots() {
           marginBottom: "135px",
           marginRight: "230px"}}
       />
-      
-
     </>
   )
 }
 
 function App() {
   const initialDate = new Date()
+  const chosenSleepDate = new Date()
+  const chosenWakeDate = new Date()
+  const addedFourCycles = new Date()
+  const addedFiveCycles = new Date()
+  const addedSixCycles = new Date()
+  const addedSevenCycles = new Date()
+  const removedFourCycles = new Date()
+  const removedFiveCycles = new Date()
+  const removedSixCycles = new Date()
+  const removedSevenCycles = new Date()
+
   const [seconds, setSeconds] = React.useState(initialDate.getSeconds())
   const [minutes, setMinutes] = React.useState(initialDate.getMinutes())
   const [hours, setHours] = React.useState(initialDate.getHours())
- 
+
+  const [chosenSleepTime, setChosenSleepTime] = React.useState("22:00")
+  const [chosenWakeTime, setChosenWakeTime] = React.useState("07:00")
+
   // True is Sleep mode, False is Wake mode
   const [sleepWake, setSleepWake] = React.useState(true)
 
@@ -206,7 +268,51 @@ function App() {
       setHours(date.getHours())
     }, 1000)
   })
+
+  const chosenSleepHours = parseInt(chosenSleepTime.split('')[0] + chosenSleepTime.split('')[1])
+  const chosenSleepMinutes = parseInt(chosenSleepTime.split('')[3] + chosenSleepTime.split('')[4])
+
+  chosenSleepDate.setHours(chosenSleepHours, chosenSleepMinutes, 0)
+  addedFourCycles.setHours(chosenSleepDate.getHours() + 6, chosenSleepDate.getMinutes() + 15, 0)
+  addedFiveCycles.setHours(chosenSleepDate.getHours() + 7, chosenSleepDate.getMinutes() + 30 + 15, 0)
+  addedSixCycles.setHours(chosenSleepDate.getHours() + 9, chosenSleepDate.getMinutes() + 15, 0)
+  addedSevenCycles.setHours(chosenSleepDate.getHours() + 10, chosenSleepDate.getMinutes() + 30 + 15, 0)
+
+  const chosenWakeHours = parseInt(chosenWakeTime.split('')[0] + chosenWakeTime.split('')[1])
+  const chosenWakeMinutes = parseInt(chosenWakeTime.split('')[3] + chosenWakeTime.split('')[4])
+
+  chosenWakeDate.setHours(chosenWakeHours, chosenWakeMinutes, 0)
+  removedFourCycles.setHours(chosenWakeDate.getHours() - 6, chosenWakeDate.getMinutes() - 15, 0)
+  removedFiveCycles.setHours(chosenWakeDate.getHours() - 7, chosenWakeDate.getMinutes() - 30 - 15, 0)
+  removedSixCycles.setHours(chosenWakeDate.getHours() - 9, chosenWakeDate.getMinutes() - 15, 0)
+  removedSevenCycles.setHours(chosenWakeDate.getHours() - 10, chosenWakeDate.getMinutes() - 30 - 15, 0)
   
+  function SleepWakeTimes() {
+    return (
+      <>
+        <h3>Set your alarm for:</h3>
+        <p>{addedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
+        <p>{addedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
+        <p>{addedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
+        <p>{addedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
+        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
+      </>
+    )
+  }
+  function WakeSleepTimes() {
+    return (
+      <>
+        <h3>Go to sleep at:</h3>
+        <p>{removedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
+        <p>{removedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
+        <p>{removedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
+        <p>{removedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
+        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
+      </>
+    )
+  }
+
+console.log(chosenWakeTime)
   return (
     <AppWrapper>
       <ClockRing>
@@ -226,6 +332,11 @@ function App() {
           <SecondsHand 
             style={{
               transform: `rotate(${seconds * 6}deg)`
+            }} 
+          />
+          <SecondsHand 
+            style={{
+              transform: `rotate(${chosenSleepHours * 30}deg)`
             }} 
           />
         </ClockWrapper>
@@ -252,7 +363,40 @@ function App() {
           <h3>Wake</h3>
         </Wake>
       </SleepWakeSwitch>
-      
+      <SleepMode style={sleepWake ? {display: 'flex'} : {display: 'none'}}>
+        <input 
+          type="time" 
+          value={chosenSleepTime} 
+          onChange={e => setChosenSleepTime(e.target.value)} 
+          style={{
+            border: "none",
+            background: "transparent",
+            fontFamily: "Montserrat",
+            fontSize: "40px",
+            fontWeight: "600",
+            margin: "1.5rem",
+            color: "#707070"
+          }}
+        />
+        <SleepWakeTimes />
+      </SleepMode>
+      <WakeMode style={sleepWake ? {display: 'none'} : {display: 'flex'}}>
+        <input 
+          type="time" 
+          value={chosenWakeTime} 
+          onChange={e => setChosenWakeTime(e.target.value)} 
+          style={{
+            border: "none",
+            background: "transparent",
+            fontFamily: "Montserrat",
+            fontSize: "40px",
+            fontWeight: "600",
+            margin: "1.5rem",
+            color: "#707070"
+          }}
+        />
+        <WakeSleepTimes />
+      </WakeMode>
     </AppWrapper>
   );
 }
