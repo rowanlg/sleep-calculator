@@ -79,6 +79,26 @@ const SecondsHand = styled.div `
   margin-bottom: 100px;
   transform-origin: bottom center;
 `
+const ChosenHoursHand = styled.div ` 
+  z-index: 1;
+  width: 3px;
+  height: 130px;
+  border-radius: 20px;
+  background: #707070;
+  position: absolute;
+  margin-bottom: 130px;
+  transform-origin: bottom center;
+`
+const ChosenMinutesHand = styled.div ` 
+  z-index: 1;
+  width: 3px;
+  height: 130px;
+  border-radius: 20px;
+  background: #707070;
+  position: absolute;
+  margin-bottom: 130px;
+  transform-origin: bottom center;
+`
 const SleepWakeSwitch = styled.div ` 
   width: 15rem;
   display: flex;
@@ -334,11 +354,16 @@ console.log(chosenWakeTime)
               transform: `rotate(${seconds * 6}deg)`
             }} 
           />
-          <SecondsHand 
+          {/* <ChosenHoursHand 
             style={{
               transform: `rotate(${chosenSleepHours * 30}deg)`
             }} 
           />
+          <ChosenMinutesHand 
+            style={{
+              transform: `rotate(${chosenSleepMinutes * 6}deg)`
+            }} 
+          /> */}
         </ClockWrapper>
       </ClockRing>
       <SleepWakeSwitch>
