@@ -35,6 +35,7 @@ const ClockWrapper = styled.div `
   align-items: center;
   box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.1);
   color: #707070;
+  position: relative;
 `
 const CenterDot = styled.div ` 
   z-index: 10;
@@ -57,6 +58,7 @@ const HoursHand = styled.div `
   border-radius: 20px;
   background: #92D6D3;
   position: absolute;
+  margin: 0px 0px 70px;
   transform-origin: bottom center;
 `
 const MinutesHand = styled.div ` 
@@ -66,6 +68,7 @@ const MinutesHand = styled.div `
   border-radius: 20px;
   background: #FF9F9F;
   position: absolute;
+  margin: 0px 0px 90px;
   transform-origin: bottom center;
 `
 const SecondsHand = styled.div ` 
@@ -75,6 +78,7 @@ const SecondsHand = styled.div `
   border-radius: 20px;
   background: #707070;
   position: absolute;
+  margin: 0px 0px 100px;
   transform-origin: bottom center;
 `
 const ChosenHoursHand = styled.div ` 
@@ -331,7 +335,6 @@ function App() {
     )
   }
 
-console.log(chosenWakeTime)
   return (
     <AppWrapper>
       <ClockRing>
@@ -340,20 +343,17 @@ console.log(chosenWakeTime)
           <CenterDot />
           <HoursHand 
             style={{
-              transform: `rotate(${hours * 30}deg)`,
-              marginBottom: '70px'
+              transform: `rotate(${hours * 30}deg)`
             }} 
           />
           <MinutesHand 
             style={{
-              transform: `rotate(${minutes * 6}deg)`,
-              marginBottom: '70px'
+              transform: `rotate(${minutes * 6}deg)`
             }} 
           />
           <SecondsHand 
             style={{
-              transform: `rotate(${seconds * 6}deg)`,
-              marginBottom: '70px'
+              transform: `rotate(${seconds * 6}deg)`
             }} 
           />
         </ClockWrapper>
