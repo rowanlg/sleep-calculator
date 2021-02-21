@@ -175,86 +175,6 @@ const WakeMode = styled.div `
   }
 `
 
-function RingDots() {
-  return (
-    <>
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginBottom: "264px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginBottom: "230px",
-          marginLeft: "130px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginBottom: "135px",
-          marginLeft: "230px"}}
-      />
-
-
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginLeft: "264px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginTop: "230px",
-          marginLeft: "130px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginTop: "135px",
-          marginLeft: "230px"}}
-      />
-
-
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginTop: "264px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginTop: "230px",
-          marginRight: "130px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginTop: "135px",
-          marginRight: "230px"}}
-      />
-
-
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginRight: "264px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginBottom: "230px",
-          marginRight: "130px"}}
-      />
-      <RingDot 
-        style={{
-          position: "absolute",
-          marginBottom: "135px",
-          marginRight: "230px"}}
-      />
-    </>
-  )
-}
 
 function App() {
   const initialDate = new Date()
@@ -268,18 +188,18 @@ function App() {
   const removedFiveCycles = new Date()
   const removedSixCycles = new Date()
   const removedSevenCycles = new Date()
-
+  
   const [seconds, setSeconds] = React.useState(initialDate.getSeconds())
   const [minutes, setMinutes] = React.useState(initialDate.getMinutes())
   const [hours, setHours] = React.useState(initialDate.getHours())
-
+  
   const [chosenSleepTime, setChosenSleepTime] = React.useState("22:00")
   const [chosenWakeTime, setChosenWakeTime] = React.useState("07:00")
-
+  
   // True is Sleep mode, False is Wake mode
   const [sleepWake, setSleepWake] = React.useState(true)
-
-
+  
+  
   React.useEffect(() => {
     const updateTime = setTimeout(() => {
       const date = new Date()
@@ -288,24 +208,105 @@ function App() {
       setHours(date.getHours())
     }, 1000)
   })
-
+  
   const chosenSleepHours = parseInt(chosenSleepTime.split('')[0] + chosenSleepTime.split('')[1])
   const chosenSleepMinutes = parseInt(chosenSleepTime.split('')[3] + chosenSleepTime.split('')[4])
-
+  
   chosenSleepDate.setHours(chosenSleepHours, chosenSleepMinutes, 0)
   addedFourCycles.setHours(chosenSleepDate.getHours() + 6, chosenSleepDate.getMinutes() + 15, 0)
   addedFiveCycles.setHours(chosenSleepDate.getHours() + 7, chosenSleepDate.getMinutes() + 30 + 15, 0)
   addedSixCycles.setHours(chosenSleepDate.getHours() + 9, chosenSleepDate.getMinutes() + 15, 0)
   addedSevenCycles.setHours(chosenSleepDate.getHours() + 10, chosenSleepDate.getMinutes() + 30 + 15, 0)
-
+  
   const chosenWakeHours = parseInt(chosenWakeTime.split('')[0] + chosenWakeTime.split('')[1])
   const chosenWakeMinutes = parseInt(chosenWakeTime.split('')[3] + chosenWakeTime.split('')[4])
-
+  
   chosenWakeDate.setHours(chosenWakeHours, chosenWakeMinutes, 0)
   removedFourCycles.setHours(chosenWakeDate.getHours() - 6, chosenWakeDate.getMinutes() - 15, 0)
   removedFiveCycles.setHours(chosenWakeDate.getHours() - 7, chosenWakeDate.getMinutes() - 30 - 15, 0)
   removedSixCycles.setHours(chosenWakeDate.getHours() - 9, chosenWakeDate.getMinutes() - 15, 0)
   removedSevenCycles.setHours(chosenWakeDate.getHours() - 10, chosenWakeDate.getMinutes() - 30 - 15, 0)
+  
+  function RingDots() {
+    return (
+      <>
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginBottom: "264px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginBottom: "230px",
+            marginLeft: "130px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginBottom: "135px",
+            marginLeft: "230px"}}
+        />
+  
+  
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginLeft: "264px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginTop: "230px",
+            marginLeft: "130px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginTop: "135px",
+            marginLeft: "230px"}}
+        />
+  
+  
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginTop: "264px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginTop: "230px",
+            marginRight: "130px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginTop: "135px",
+            marginRight: "230px"}}
+        />
+  
+  
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginRight: "264px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginBottom: "230px",
+            marginRight: "130px"}}
+        />
+        <RingDot 
+          style={{
+            position: "absolute",
+            marginBottom: "135px",
+            marginRight: "230px"}}
+        />
+      </>
+    )
+  }
   
   function SleepWakeTimes() {
     return (
@@ -354,16 +355,6 @@ console.log(chosenWakeTime)
               transform: `rotate(${seconds * 6}deg)`
             }} 
           />
-          {/* <ChosenHoursHand 
-            style={{
-              transform: `rotate(${chosenSleepHours * 30}deg)`
-            }} 
-          />
-          <ChosenMinutesHand 
-            style={{
-              transform: `rotate(${chosenSleepMinutes * 6}deg)`
-            }} 
-          /> */}
         </ClockWrapper>
       </ClockRing>
       <SleepWakeSwitch>
