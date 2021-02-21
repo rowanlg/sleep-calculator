@@ -8,6 +8,7 @@ const AppWrapper = styled.div `
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   background: #F2F2F2;
   color: #707070;
   font-family: Montserrat;
@@ -307,7 +308,7 @@ function App() {
       </>
     )
   }
-  
+
   function SleepWakeTimes() {
     return (
       <>
