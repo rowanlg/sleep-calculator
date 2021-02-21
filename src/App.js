@@ -22,6 +22,7 @@ const ClockRing = styled.div `
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   box-shadow: 5px 7px 15px 2px rgba(0,0,0,0.2);
 `
 const ClockWrapper = styled.div ` 
@@ -50,6 +51,7 @@ const RingDot = styled.div `
   height: 5px;
   border-radius: 20px;
   background: #C4C4C4;
+  position: absolute;
 `
 const HoursHand = styled.div ` 
   z-index: 3;
@@ -59,6 +61,7 @@ const HoursHand = styled.div `
   background: #92D6D3;
   position: absolute;
   margin: 0px 0px 70px;
+  /* transform: translateY(70px); */
   transform-origin: bottom center;
 `
 const MinutesHand = styled.div ` 
