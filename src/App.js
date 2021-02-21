@@ -358,7 +358,7 @@ console.log(chosenWakeTime)
           />
         </ClockWrapper>
       </ClockRing>
-      <SleepWakeSwitch>
+      {/* <SleepWakeSwitch>
         <Sleep 
           onClick={() => setSleepWake(true)}
           style={
@@ -413,7 +413,7 @@ console.log(chosenWakeTime)
           }}
         />
         <WakeSleepTimes />
-      </WakeMode>
+      </WakeMode> */}
     </AppWrapper>
   );
 }
