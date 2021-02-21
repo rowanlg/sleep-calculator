@@ -57,7 +57,7 @@ const HoursHand = styled.div `
   border-radius: 20px;
   background: #92D6D3;
   position: absolute;
-  margin-bottom: 70px;
+  margin-bottom: 70px !important;
   transform-origin: bottom center;
 `
 const MinutesHand = styled.div ` 
@@ -67,7 +67,7 @@ const MinutesHand = styled.div `
   border-radius: 20px;
   background: #FF9F9F;
   position: absolute;
-  margin-bottom: 90px;
+  margin-bottom: 90px !important;
   transform-origin: bottom center;
 `
 const SecondsHand = styled.div ` 
@@ -77,7 +77,7 @@ const SecondsHand = styled.div `
   border-radius: 20px;
   background: #707070;
   position: absolute;
-  margin-bottom: 100px;
+  margin-bottom: 100px !important;
   transform-origin: bottom center;
 `
 const ChosenHoursHand = styled.div ` 
