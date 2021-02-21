@@ -228,9 +228,45 @@ function App() {
   removedSixCycles.setHours(chosenWakeDate.getHours() - 9, chosenWakeDate.getMinutes() - 15, 0)
   removedSevenCycles.setHours(chosenWakeDate.getHours() - 10, chosenWakeDate.getMinutes() - 30 - 15, 0)
   
-  function RingDots() {
+  // function RingDots() {
+  //   return (
+  //     <>
+        
+  //     </>
+  //   )
+  // }
+
+  function SleepWakeTimes() {
     return (
       <>
+        <h3>Set your alarm for:</h3>
+        <p>{addedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
+        <p>{addedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
+        <p>{addedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
+        <p>{addedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
+        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
+      </>
+    )
+  }
+  function WakeSleepTimes() {
+    return (
+      <>
+        <h3>Go to sleep at:</h3>
+        <p>{removedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
+        <p>{removedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
+        <p>{removedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
+        <p>{removedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
+        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
+      </>
+    )
+  }
+
+console.log(chosenWakeTime)
+  return (
+    <AppWrapper>
+      <ClockRing>
+        <ClockWrapper>
+          
         <RingDot 
           style={{
             position: "absolute",
@@ -305,42 +341,9 @@ function App() {
             marginBottom: "135px",
             marginRight: "230px"}}
         />
-      </>
-    )
-  }
 
-  function SleepWakeTimes() {
-    return (
-      <>
-        <h3>Set your alarm for:</h3>
-        <p>{addedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
-        <p>{addedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
-        <p>{addedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
-        <p>{addedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
-        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
-      </>
-    )
-  }
-  function WakeSleepTimes() {
-    return (
-      <>
-        <h3>Go to sleep at:</h3>
-        <p>{removedFourCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 4 cycles (6h)</p>
-        <p>{removedFiveCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 5 cycles (7.5h)</p>
-        <p>{removedSixCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 6 cycles (9h)</p>
-        <p>{removedSevenCycles.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 7 cycles (10.5h)</p>
-        <p className="footNote">*includes an added 15 minutes for getting to sleep</p>
-      </>
-    )
-  }
-
-console.log(chosenWakeTime)
-  return (
-    <AppWrapper>
-      <ClockRing>
-        <ClockWrapper>
-          <RingDots />
           <CenterDot />
+          
           <HoursHand 
             style={{
               transform: `rotate(${hours * 30}deg)`
